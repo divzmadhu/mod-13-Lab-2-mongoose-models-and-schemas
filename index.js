@@ -4,9 +4,17 @@ import 'dotenv/config';
 import express from 'express';
 //1.3 import  from connection.js
 import connectDB from './db/connection.js';
+//1.4 import book routes to connect them with the main Express Application
+import bookRoutes from './routes/bookRoutes.js';
+
 
 // 2.1 Create the Express application instance
 const app = express();
+
+// 2.3 Middleware to parse incoming JSON request bodies
+app.use(express.json());
+
+
 // 2.2 Set the port number the server will listen on
 const port = 3000;
 
@@ -17,11 +25,14 @@ const startServer = async () => {
   });
 }
 
-
+// 3. Define a basic GET route to check whether the server is running
 app.get("/", (req, res) => {
   res.send("Server is started and running.");
   console.log("Server is started and running");
 });
+
+// 4. Connect all book-related routes to the main application
+app.use("/api/books",bookRoutes);
 
 
 // Start the application
