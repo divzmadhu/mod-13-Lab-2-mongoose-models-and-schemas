@@ -75,7 +75,7 @@ router.put("/:id", async (req, res) => {
 
         // 7.2 Check whether the book esixts
         if(!updatedBook){
-            return res.status(404).json({message : "Book NOT found"});
+            return res.status(404).json({message : "Book NOT found!"});
         }
 
         // 7.3 Send the updated book to the client
@@ -88,3 +88,32 @@ router.put("/:id", async (req, res) => {
     }
 
 });
+
+// 8. DELETE: Deletes a book by its _id
+router.delete("/:id", async(req, res) => {
+    try{
+
+        //8.1 Find the book by ID and delete it
+        const deletedBook = await Book.findByIdAndDelete(req.params.id);
+
+        //8.2  Check whether the book exists
+        if(!deletedBook){
+            return res.status(404).json({message: "Book NOT found!"});            
+        }
+        
+        //8.3 Send a success response to the client
+        res.status(200).json({
+            message : "Book deleted successfully!",
+            deletedBook: deletedBook
+        });        
+
+    }catch(error) {
+
+        //8.4 Handle errors while deleting the book
+        res.status(500).json({message: error.message});
+
+    }
+})
+
+//9. Export the router so it can be used in index.js
+export default router;
