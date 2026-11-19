@@ -19,11 +19,22 @@ app.use(express.json());
 const port = 3000;
 
 const startServer = async () => {
-  await connectDB();
-  app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-  });
-}
+  try {
+    //1. Connect to MongoDB before starting the server
+    await connectDB();
+
+    //2. Start listening fro incoming HTTP requests
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+    });
+    
+  } catch (error) {
+
+    // 3.Handle errors if the database connection fails
+    console.error("Unable to start the server", error.message);
+    process.exit(1);
+  }
+};
 
 // 3. Define a basic GET route to check whether the server is running
 app.get("/", (req, res) => {
@@ -32,7 +43,7 @@ app.get("/", (req, res) => {
 });
 
 // 4. Connect all book-related routes to the main application
-app.use("/api/books",bookRoutes);
+app.use("/api/books", bookRoutes);
 
 
 // Start the application
