@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
 
     } catch (error) {
         // 4.2 Handle errors while adding a book
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ "something went wrong.message": error.message });
     }
 });
 
@@ -70,7 +70,8 @@ router.put("/:id", async (req, res) => {
         const updatedBook = await Book.findByIdAndUpdate(
             req.params.id,
             req.body,
-            { new: true, runValidators: true }
+            // { new: true, runValidators: true }
+            { returnDocument: 'after', runValidators: true }
         );
 
         // 7.2 Check whether the book esixts
