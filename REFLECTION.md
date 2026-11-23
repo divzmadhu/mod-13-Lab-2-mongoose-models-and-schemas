@@ -161,6 +161,9 @@ The following screenshots can be included to demonstrate the implementation and 
 **4. Get All Books — Initial Empty State (`GET /api/books`)**
 
 ![GET /api/books (empty list) - Browser](screenshots/02a-get-all-books.png)
+
+<br>
+
 ![GET /api/books (200 OK) - Postman](screenshots/02b-get-all-books.png)
 
 **5. Create a Book (`POST /api/books`)**
@@ -170,30 +173,58 @@ The following screenshots can be included to demonstrate the implementation and 
 **6. Get All Books — After Adding a Book (`GET /api/books`)**
 
 ![GET /api/books (populated list) - Browser](screenshots/04-get-all-books-populated.png)
+
+<br>
+
 ![Saved book document in database - MongoDB Compass](screenshots/05-mongodb-document.png)
 
 **7. Get Book by ID (`GET /api/books/:id`)**
 
 ![GET /api/books/:id (200 OK) - Postman](screenshots/06a-get-book-by-id-postman.png)
+
+<br>
+
 ![GET /api/books/:id - Browser](screenshots/06b-get-book-by-id-browser.png)
+
+<br>
+
 ![Query book by _id - MongoDB Compass](screenshots/06c-get-book-by-id-mongodb.png)
 
 **8. Get Book by ID — Not Found (`GET /api/books/:id`)
 
 ![GET /api/books/:id with non-existent ID (404 Not Found) - Postman](screenshots/07a-get-book-not-found-postman.png)
+
+<br>
+
 ![GET /api/books/:id with non-existent ID - Browser](screenshots/07b-get-book-not-found-browser.png)
+
+<br>
+
 ![Query non-existent _id returning no results - MongoDB](screenshots/07c-get-book-not-found-mongodb.png)
+
 
 **9. Update a Book (`PUT /api/books/:id`)**
 
 ![PUT /api/books/:id updating inStock to false (200 OK) - Postman](screenshots/08a-update-book-postman.png)
+
+<br>
+
 ![Updated book document with inStock: false - MongoDB](screenshots/08b-update-book-mongodb.png)
+
+<br>
+
 ![GET /api/books/:id confirming updated inStock: false - Browser](screenshots/08c-update-book-browser.png)
 
 **10.  Delete a Book (`DELETE /api/books/:id`)
 
 ![DELETE /api/books/:id (200 OK) - Postman](screenshots/09a-delete-book-postman.png)
+
+<br>
+
 ![Query deleted book _id returning no results - MongoDB](screenshots/09b-delete-book-mongodb.png)
+
+<br>
+
 ![GET /api/books/:id confirming deleted book is not found - Browser](screenshots/09c-delete-book-browser.png)
 
 ## 9. Challenges Faced and How I Addressed Them
