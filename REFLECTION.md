@@ -1,6 +1,37 @@
 # Module 13 Lab 2
 # Digital Bookshelf API
 
+## Reflection Questions
+1. Why is it beneficial to separate your routes, models, and database connection into different directories?
+
+Separating routes, models, and database connections into different directories makes the project easier to understand, manage, and maintain.
+
+While working on this project, I understood that each file has a specific responsibility. The routes folder handles API requests, the models folder defines the structure of the data, and the db folder handles the database connection.
+
+Keeping these separate avoids putting all the code into one file. It also makes it easier to find and update specific parts of the application without affecting other functionality.
+
+2. What is the difference between PUT and PATCH HTTP methods, and which one does your PUT /:id endpoint more closely resemble?
+
+Both PUT and PATCH are HTTP methods used to update existing resources, but they work differently.
+
+PUT is generally used to replace an entire resource with the new data provided, whereas PATCH is used to update only specific fields without replacing the entire resource.
+
+In my project, I used findByIdAndUpdate() in the PUT route. I tested it by changing only the inStock field while keeping the other book details unchanged.
+
+Because my implementation allows updating individual fields, its behavior is closer to PATCH than a traditional full-resource PUT operation.
+
+3. In the DELETE route, what is a good practice for the response you send back to the client after a successful deletion?
+
+Should you send the deleted object, a simple success message, or something else? Why?
+
+After successfully deleting a book, it is good practice to send a response confirming that the deletion was successful.
+
+In my project, I return a success message along with the deleted book details and a 200 OK status code.
+
+Including the deleted book details helps the client understand exactly which record was removed. I also added a check to see whether the book exists before attempting to delete it. If the book is not found, the API returns a 404 Not Found response with a message saying "Book not found".
+
+This helped me understand the importance of sending meaningful responses for both successful operations and errors.
+
 ## 1. Introduction
 
 The Digital Bookshelf API is a backend project built using Node.js, Express.js, and MongoDB. The purpose of this project is to create a REST API that allows users to manage a collection of books.
